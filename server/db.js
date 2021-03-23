@@ -16,8 +16,8 @@ function getJobs(db = database){
 }
 
 // ADD Job
-function createJob({jobName, clientName, siteAddress, collection, lotNumber, jobNumber, gfa, salesPerson, image_cover}, db = database){
-    return db('jobs').insert({jobName, clientName, siteAddress, collection, lotNumber, jobNumber, gfa, salesPerson, image_cover})
+function createJob({jobName, clientName, siteAddress, collection, lotNumber, jobNumber, houseType, gfa, salesPerson, imageCover}, db = database){
+    return db('jobs').insert({jobName, clientName, siteAddress, collection, lotNumber, jobNumber, houseType, gfa, salesPerson, imageCover})
 }
 
 // DELETE Job

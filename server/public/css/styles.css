@@ -1,0 +1,421 @@
+/*---------- Colours and Fonts ---------*/
+:root {
+  --grey1: #f9f9f9;
+  --grey2: #eeeeee;
+  --grey3: #cecece;
+  --grey4: #333333;
+
+  --darkText: black;
+  --lightText: white;
+
+  --red: #ec2027;
+}
+
+@font-face {
+  font-family: Proxima Nova;
+  src: url("../assets/ProximaNova-Regular.otf");
+}
+
+/*---------- Overall ---------*/
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/*---------- Body ---------*/
+body {
+  background-color: var(--grey1);
+  font-family: "Proxima Nova", "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/*---------- Headings ---------*/
+h1 {
+  color: var(--darkText);
+  font-size: 50px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+h2 {
+  color: var(--darkText);
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+h3 {
+  color: var(--darkText);
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+h4 {
+  color: var(--darkText);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+h5 {
+  color: var(--darkText);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+h6 {
+  color: var(--darkText);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+p {
+  color: black;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 23px;
+  display: inline-block;
+  margin: 0;
+}
+
+blockquote {
+  color: black;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
+  display: inline-block;
+}
+
+ul {
+}
+
+ol {
+  display: block;
+  list-style-type: lower-alpha;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 25px;
+}
+
+li {
+  font-size: 12px;
+}
+
+/*---------- Main ----------*/
+main {
+  height: auto;
+}
+
+/*---------- Nav ---------*/
+nav {
+  top: 0;
+  position: fixed;
+  height: 90px;
+  width: 100%;
+  /* background: rgb(236,32,39);
+    background: linear-gradient(130deg, rgba(236,32,39,1) 20%, rgba(0,0,0,0.5494572829131652) 22%, rgba(0,0,0,0.5718662464985995) 45%); */
+  background: rgba(0, 0, 0, 0.5718662464985995);
+  background-image: url("../img/logo/background.svg");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-right: 5vw;
+  z-index: 100;
+}
+
+.navLogo {
+  width: "auto";
+  cursor: "pointer";
+}
+
+.navLink {
+  display: inline-flex;
+  color: #f2f2f2;
+  padding: 30px;
+  text-decoration: none;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.navLink:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.navLink.active {
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
+/*---------- Job List ----------*/
+.jobContainer {
+  height: auto;
+  width: 90vw;
+  margin: 90px auto;
+  padding: 2%;
+}
+
+/*---------- Job Selections ----------*/
+.jobContainerWithSidebar {
+  height: auto;
+  width: 80vw;
+  margin: 90px 2.5vw 0 17.5vw;
+  padding: 2%;
+}
+
+.innerContainer {
+  display: inline-flex;
+  display: grid;
+  grid-template:
+    "a b" auto
+    "a b" auto
+    "a b" auto / 0.25fr 1fr;
+}
+
+.textContainer {
+  height: auto;
+  display: block;
+  width: 60%;
+}
+
+.imageContainer {
+  height: auto;
+}
+
+/*---------- Job Row ----------*/
+#jobsTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#jobsTable tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+#jobsTable {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+#jobsTable td,
+#jobs th {
+  border-bottom: 1px solid firebrick;
+  padding: 8px;
+}
+
+#jobsTable th {
+  padding: 8px;
+  text-align: left;
+  background-color: #ec2027;
+  color: white;
+}
+
+#jobsTable a {
+  text-decoration: none;
+  color: black;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 25px auto 25px auto;
+}
+
+/*---------- Submit Button ----------*/
+.submitButton {
+  color: white;
+  margin: 25px 30% 25px 30%;
+  padding: 5px;
+  width: 40%;
+  height: 33px;
+  background-color: #ec2027;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline;
+}
+
+/*---------- Add Job Form ----------*/
+.form {
+  width: 100%;
+  justify-content: center;
+}
+
+.grid2 {
+  margin: 0 auto;
+  width: 40%;
+  display: grid;
+  grid-template:
+    "a b" 50px
+    "a b" 50px
+    "a b" 50px
+    "a b" 50px
+    "a b" 50px
+    "a b" 50px
+    "a b" 50px
+    "a b" 50px / 1fr 1fr;
+  column-gap: 1px;
+}
+
+.columnA {
+  font-size: 20px;
+  font-weight: 300;
+  text-align: right;
+}
+
+.columnB {
+  justify-content: space-evenly;
+}
+
+.formHeader {
+  height: 5vh;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.formHeader h4 {
+  padding: 10px;
+}
+
+#addForm {
+  height: auto;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  padding: 10px;
+}
+
+#addForm p {
+  margin-right: 20px;
+}
+
+#jobCover {
+  width: 250px;
+  height: 250px;
+  float: left;
+  border: 3px, solid, black;
+}
+
+.addDescription {
+  float: left;
+}
+
+.addInput {
+  float: right;
+}
+
+label {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+input {
+  height: 33px;
+  width: 80%;
+  border: 1px solid #000;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+input[type="text"],
+textarea {
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #dddddd;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px #ec2027;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #ec2027;
+}
+
+/*---------- View Job --------*/
+.jobDetails {
+  padding: 10px;
+  display: inline-flex;
+  width: 100%;
+  overflow: auto;
+}
+
+.jobDetailButtons {
+  float: right;
+}
+
+.jobDetailsImg {
+  height: 180px;
+  width: 360px;
+  margin-right: 50px;
+  float: right;
+  display: inline-flex;
+  background-size: cover;
+  background-position: center;
+}
+
+.grid {
+  width: 60%;
+  display: grid;
+  grid-template: "a b" auto / 1fr 2fr;
+  column-gap: 3px;
+  row-gap: 6px;
+}
+
+/*---------- Media Queries ----------*/
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+select {
+  height: 33px;
+  width: 80%;
+  border: 1px solid #000;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  text-overflow: ellipsis;
+}
+
+select:focus {
+  box-shadow: 0 0 5px #ec2027;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #ec2027;
+}
+
+select {
+  font-size: 12px;
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addJob } from '../api'
 import { FaEdit } from 'react-icons/fa'
 
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useHistory, Redirect } from "react-router-dom";
 class JobAdd extends React.Component {
 	constructor(props){
 		super(props)
@@ -18,7 +19,8 @@ class JobAdd extends React.Component {
 				gfa: '',
 				budget: '',
 				deposit: '', 
-				salesPerson: ''
+				salesPerson: '',
+				imageCover:'',
 			}
 		this.handleChange = this.handleChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
