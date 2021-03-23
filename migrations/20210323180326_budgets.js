@@ -1,8 +1,9 @@
-
-exports.up = function(knex) {
-  
+exports.up = (knex, Promise) => {
+    return knex.schema.createTable('budgets', (table) => {
+    table.increments('id').primary()
+    })  
 };
 
-exports.down = function(knex) {
-  
+exports.down = (knex, Promise) => {
+    return knex.schema.dropTable('budgets')
 };

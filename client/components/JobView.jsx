@@ -5,8 +5,6 @@ import { FaEdit, FaSearchPlus, FaRegFileAlt, FaArrowLeft, FaTrashAlt } from 'rea
 
 import JobEdit from './JobEdit'
 import JobDetails from './JobDetails'
-import JobSelections from './JobSelections'
-import SalesDoc from './SalesDoc'
 
 import { removeJob } from '../actions'
 import { deleteJob } from '../api'
@@ -72,8 +70,6 @@ class JobView extends React.Component {
                                     <FaArrowLeft style={backStyle} onClick={this.redirectToJobList} />
                                     <div className='jobDetailButtons'>
                                     <FaEdit style={editStyle} onClick={this.props.edit} role='button' />
-                                    <FaSearchPlus style={selectionsStyle} onClick={this.props.selections} role='button' />
-                                    <FaRegFileAlt style={salesDocStyle} onClick={this.props.salesDoc} role='button' />
                                     <FaTrashAlt style={deleteStyle} onClick={this.deleteJob} role='button' />
                                     </div>
                                     <JobDetails {...this.props} onEscape={this.redirectToJobList} />
@@ -93,18 +89,7 @@ class JobView extends React.Component {
                             </> 
                         : ''}
 
-                        {this.props.currentForm == 'selections' ?
-                            <>
-                                <JobSelections {...this.props.match.params}{...this.props} onEscape={this.props.view} />
-                            </>
-                        : ''}
-
-                        {this.props.currentForm == 'salesDoc' ?
-                            <>
-                                <SalesDoc {...this.props.match.params}{...this.props} onEscape={this.props.view} />
-                            </>
-                        : ''}
-            </>
+           </>
         )
     }
 }

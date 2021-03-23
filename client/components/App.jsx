@@ -8,7 +8,6 @@ import JobList from './JobList'
 import JobAdd from './JobAdd'
 import JobView from './JobView'
 import JobEdit from './JobEdit'
-import SalesDoc from './SalesDoc'
 
 class App extends React.Component {
     constructor(props) {
@@ -39,7 +38,6 @@ class App extends React.Component {
             <Route path="/job_list" component={JobList} />
             <Route path="/job_view/:id" render={(matchProps) => <JobView {...matchProps}{...this.props} />} />
             <Route path="/job_edit/:jobName" render={(matchProps) => <JobEdit {...matchProps}{...this.props} />} />
-            <Route path="/sales_doc/:jobName" render={(matchProps) => <SalesDoc {...matchProps}{...this.props} />} />
           </main>
           
         </Router>

@@ -1,31 +1,61 @@
 import React from 'react'
-import {render, screen, fireEvent, waitFor} from '@testing-library/react'
-import {Provider} from 'react-redux'
+import { connect } from 'react-redux'
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useHistory, Redirect } from "react-router-dom";
 
-import { JobListItem } from './JobList'
+import moment from 'moment'
+import {formatCurrency} from './Utilities/utilities'
 
-import { deleteJob } from './api'
-import { REMOVE_JOB } from './actions'
-import store from './store'
+import { changeForm } from '../actions'
 
-const job = {id: 1, jobName: 'Test Job'}
+class JobListItem extends React.Component {
+    state = {
+        toJobView: false,
+    }
 
-jest.mock('../api', () => ({
-    deleteJob: jest.fn(() => Promise.resolve('done'))
-}))
+    redirectToJobView = () => {
+        this.setState(() => ({
+            toJobView: true,
+        }))
+        this.props.dispatch(changeForm('view'))
+     }
 
-jest.mock('./JobEdit.jsx', () => (() => <>JobEdit</>))
+    render() {
+        const { job } = this.props
+        
+        if (this.state.toJobView === true) {
+            return <Redirect to={`/job_view/${job.id}`} />
+        }
 
-jest.spyOn(store, 'dispatch')
+        return (
+            <>
 
-beforeEach(() => render(<Provider store={store}><JobListItem job={job}/></Provider>))
+                <tr onClick={this.redirectToJobView}>
+                    <td>
+                        {job.id}
+                    </td>
+                    <td>
+                        {job.jobName}
+                    </td>
+                    <td>
+                        {job.jobNumber}
+                    </td>
+                    <td>
+                        {job.collection}
+                    </td>
+                    <td>
+                        {formatCurrency(job.retailPrice)}
+                    </td>
+                    <td>
+                        {job.gfa}
+                    </td>
+                    <td>
+                        {moment.unix(job.dateCreated / 1000).format('MMM YY')}
+                    </td>
+                 </tr>
 
-test('renders a list item', () => {
-    const listItem = screen.getByRole('tr')
-    expect(listItem.innerHTML).toMatch(/do stuff/)
-})
+            </>
+        )
+    }
+}
 
-test("shows edit form", () => {
-    let listItem = screen.getByRole('listitem')
-    expect(listitem.innerHTML).toMatch(/Edit Form/)
-})
+export default connect()(JobListItem)
