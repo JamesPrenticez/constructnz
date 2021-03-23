@@ -6,8 +6,6 @@ const cors = require('cors')
 const server = express()
 
 const jobsRoutes = require('./routes/jobs')
-const productsRoutes = require('./routes/products')
-const selectionsRoutes = require('./routes/selections')
 const catchAll = require('./routes/catchAll')
 
 // Middle ware
