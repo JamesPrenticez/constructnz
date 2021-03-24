@@ -7,7 +7,7 @@ import SweetAlert from 'sweetalert2-react'
 import { isAuthenticated, signIn } from 'authenticare/client'
 
 import { getUserDetails, userPending, userSuccess } from '../actions/users'
-import { BASE_API_URL } from '../base-api.js'
+import { BASE_API_URL } from '../config.js'
 import { showError, hideError } from '../actions/error'
 import WaitIndicator from './WaitIndicator'
 

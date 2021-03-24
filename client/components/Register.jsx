@@ -7,7 +7,7 @@ import SweetAlert from 'sweetalert2-react'
 
 import { openUploadWidget } from './CloudinaryService'
 import { showError, hideError } from '../actions/error'
-import { BASE_API_URL } from '../base-api.js'
+import { BASE_API_URL } from '../config.js'
 import { userPending, userSuccess, getUserDetails } from '../actions/users'
 import WaitIndicator from './WaitIndicator'
 import Autocomplete from './Autocomplete'
@@ -88,6 +88,7 @@ class Register extends React.Component {
   }
 
   submitHandler = e => {
+    console.log(this.state)
     this.props.dispatch(hideError())
     if (this.state.password !== this.state.confirmPassword) {
       this.props.dispatch(showError('Passwords do not match'))
@@ -217,7 +218,7 @@ class Register extends React.Component {
               </div>
             </div>
           }
-          <Form.Checkbox onChange={this.checkboxHandler} required label={<label>I agree to the <a href='/guidelines'>TakeMe Guidelines</a></label>} />
+          <Form.Checkbox onChange={this.checkboxHandler} required label={<label>I agree to the <a href='/guidelines'>ConstructNZ Guidelines</a></label>} />
           <Form.Group id='sign-up-buttons'>
             <Link to='/'>
               <Form.Button>
@@ -251,6 +252,6 @@ const mapStateToProps = state => {
   }
 }
 
-export const VanillaSignUp = Register
+// export const VanillaSignUp = Register
 
 export default connect(mapStateToProps)(Register)
