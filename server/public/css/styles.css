@@ -11,10 +11,10 @@
   --red: #ec2027;
 }
 
-@font-face {
+/* @font-face {
   font-family: Proxima Nova;
   src: url("../assets/ProximaNova-Regular.otf");
-}
+} */
 
 /*---------- Overall ---------*/
 * {

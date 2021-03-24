@@ -4,13 +4,13 @@ import request from 'superagent'
 //GET Jobs
 export function getJobs() {
     return request
-    .get('/api/v1/jobs')
+    .get('/api/v1/jobs/get_jobs')
     .then(res => res.body.jobs)
 }
 
 //ADD Job
 export function addJob(jobName, clientName){
-    return request.post('/api/v1/jobs')
+    return request.post('/api/v1/jobs/add_job')
         .send({jobName, clientName})
         .then(res => res.body.id)
 }

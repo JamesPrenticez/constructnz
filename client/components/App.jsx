@@ -1,56 +1,58 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route, Link, NavLink, useParams, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from 'react-router-dom'
 
+import { createBrowserHistory } from 'history'
+import { wrapHistory } from 'oaf-react-router'
+
+import { CloudinaryContext } from 'cloudinary-react'
+import { isAuthenticated } from 'authenticare/client'
+import { Container } from 'semantic-ui-react'
+
+import Navbar from './Navbar'
+import Register from './Register'
+import Login from './Login'
 import Homepage from './Homepage'
-
 import JobList from './JobList'
 import JobAdd from './JobAdd'
 import JobView from './JobView'
 import JobEdit from './JobEdit'
 
+import { getUserDetails } from '../actions/users'
+
 class App extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-          toHome: false,
-      }
+  componentDidMount () {
+    if (isAuthenticated()) {
+      this.props.dispatch(getUserDetails())
+    }
   }
 
   render() {
+    const history = createBrowserHistory()
+    wrapHistory(history)
      return (
-      <>
-        <Router>
-          <main>
-            <nav>
-              <NavLink className='navLogo'to="/home">
-                <img src={'../img/logo/logo.png'}></img>
-              </NavLink>
-              <div className='floatRight'>
-                <NavLink className='navLink' to="/home">Homepage</NavLink>
-                <NavLink className='navLink' to="/job_list">Jobs</NavLink>
-              </div>
-            </nav>
+      <CloudinaryContext cloudName='constructnz'>
+        <Router history={history}>
+          <Route path='/' component={Navbar} />
+          <Container id='main-container' style={{ margin: '7em 2em 2em 0' }}>
+            <div id='wrapper'>
+              <Switch>
 
-            <Route exact path="/" component={Homepage} />
-            <Route path="/home" component={Homepage} />
-            <Route path="/job_add" component={JobAdd} />
-            <Route path="/job_list" component={JobList} />
-            <Route path="/job_view/:id" render={(matchProps) => <JobView {...matchProps}{...this.props} />} />
-            <Route path="/job_edit/:jobName" render={(matchProps) => <JobEdit {...matchProps}{...this.props} />} />
-          </main>
-          
+                <Route path="/home" component={Homepage} />
+                <Route exact path='/register' component={Register} />
+                <Route exact path='/login' component={Login} />
+                <Route path="/job_add" component={JobAdd} />
+                <Route path="/job_list" component={JobList} />
+                <Route path="/job_view/:id" render={(matchProps) => <JobView {...matchProps}{...this.props} />} />
+                <Route path="/job_edit/:jobName" render={(matchProps) => <JobEdit {...matchProps}{...this.props} />} />
+              </Switch>
+            </div>
+          </Container>
+          <Route path='/' component={Homepage} />
         </Router>
-      </>
+      </CloudinaryContext>
     )
   }
 }
 
-function mapStateToProps(state) {
-  const { jobs } = state
-  return {
-    jobs: state.jobs
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default connect()(App)

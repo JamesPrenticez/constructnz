@@ -1,6 +1,4 @@
-const environment = process.env.NODE_ENV || 'development'
-const config = require('../knexfile')[environment]
-const database = require('knex')(config)
+const connection = require('./connection')
 
 module.exports = {
     getJobs,
@@ -11,7 +9,7 @@ module.exports = {
 
 // ------------------------------------------------------------ JOBS ------------------------------------------------------------
 // GET Jobs
-function getJobs(db = database){
+function getJobs(db = connection){
     return db('jobs')
 }
 
@@ -21,13 +19,13 @@ function createJob({jobName, clientName, siteAddress, collection, lotNumber, job
 }
 
 // DELETE Job
-function deleteJob(id, db = database){
+function deleteJob(id, db = connection){
     if(!id) return Promise.reject('id must be specified')
     return db('jobs').where({id}).delete()
 }
 
 //UPDATE Task
-function updateJob(id, jobName, clientName, siteAddress, collection, lotNumber, jobNumber, houseType, gfa, salesPerson, imageCover, deposit, retailPrice, contractPrice, db = database) {
+function updateJob(id, jobName, clientName, siteAddress, collection, lotNumber, jobNumber, houseType, gfa, salesPerson, imageCover, deposit, retailPrice, contractPrice, db = connection) {
     if (!id) return Promise.reject('id must be specified')
     return db('jobs').where({id}).update({jobName, clientName, siteAddress, collection, lotNumber, jobNumber, houseType, gfa, salesPerson, imageCover, deposit, retailPrice, contractPrice})
 }
