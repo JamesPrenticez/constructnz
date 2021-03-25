@@ -66,6 +66,7 @@ class Navbar extends React.Component {
               <Menu.Item as={Link} to='/login'>
                 Login
               </Menu.Item>
+              <Link to="/job_list">JOBLIST</Link>
               <Menu.Item as={Link} to='/register'>
                 Sign Up
               </Menu.Item>

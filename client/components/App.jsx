@@ -30,7 +30,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const history = createBrowserHistory()
     wrapHistory(history)
      return (
@@ -40,13 +39,13 @@ class App extends React.Component {
           <Container id='main-container' style={{ margin: '7em 2em 2em 0' }}>
             <div id='wrapper'>
               <Switch>
-                <Route path="/" component={Homepage} />
+                <Route exact path="/" component={Homepage} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
-                <Route path="/job_add" component={JobAdd} />
-                <Route path="/job_list" component={JobList} />
-                <Route path="/job_view/:id" render={(matchProps) => <JobView {...matchProps}{...this.props} />} />
-                <Route path="/job_edit/:jobName" render={(matchProps) => <JobEdit {...matchProps}{...this.props} />} />
+                <Route exact path="/job_add" component={JobAdd} />
+                <Route exact path="/job_list" component={JobList} />
+                <Route exact path="/job_view/:id" render={(matchProps) => <JobView {...matchProps}{...this.props} />} />
+                <Route exact path="/job_edit/:jobName" render={(matchProps) => <JobEdit {...matchProps}{...this.props} />} />
                 <Route exact path='*' component={Error404} />
               </Switch>
             </div>

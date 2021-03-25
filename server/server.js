@@ -18,8 +18,8 @@ server.use('/api/v1/users', usersRoutes)
 server.use('/api/v1/jobs', jobsRoutes)
 
 //Catch All
-server.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'))
-})
+// server.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, './public/index.html'))
+// })
 
 module.exports = server
