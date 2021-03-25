@@ -5,7 +5,7 @@ const router = express.Router()
 
 const db = require('../db/profiles')
 
-module.exports = router
+
 
 //GET All Users
 router.get('/getuser', getTokenDecoder(), (req, res) => {
@@ -35,5 +35,7 @@ router.put('/edit', getTokenDecoder(), (req, res) => {
     res.sendStatus(401)
   }
 })
+
+module.exports = router
 
 
