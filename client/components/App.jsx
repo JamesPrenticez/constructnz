@@ -14,6 +14,7 @@ import Register from './Register'
 import Login from './Login'
 import Homepage from './Homepage'
 import Footer from './Footer'
+import Profile from './Profile'
 import JobList from './JobList'
 import JobAdd from './JobAdd'
 import JobView from './JobView'
@@ -42,6 +43,7 @@ class App extends React.Component {
                 <Route exact path="/" component={Homepage} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/profile/:id' component={Profile} />
                 <Route exact path="/job_add" component={JobAdd} />
                 <Route exact path="/job_list" component={JobList} />
                 <Route exact path="/job_view/:id" render={(matchProps) => <JobView {...matchProps}{...this.props} />} />
