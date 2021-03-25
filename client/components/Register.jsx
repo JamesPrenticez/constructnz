@@ -209,9 +209,11 @@ class Register extends React.Component {
                     return this.deleteImage()
                   }}>
                     <img
-                      src='/trash-can.png'
+                      src='img/trash-can.png'
                       alt='delete button'
                       className='deleteButton'
+                      style={{height: '25px', width: '25px'}}
+
                     />
                   </button>
                 </div>

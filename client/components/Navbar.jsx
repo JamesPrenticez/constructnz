@@ -22,9 +22,9 @@ class Navbar extends React.Component {
       </Menu.Item>
     )
     return (
-      <Menu borderless size='small' fixed='top' inverted color='blue' style={{padding: '0 10vw 0 10vw'}}>
+      <Menu borderless size='small' fixed='top' inverted color='deepgreen' style={{padding: '0 10vw 0 10vw'}}>
           <Menu.Item style={{ padding: '10px' }} as={Link} to='/' header>
-            <Image size='small' src={'/logo-white.png'} />
+            <Image size='small' src={'img/logo.png'} />
           </Menu.Item>
         <Menu.Menu style={fontStyle} position='right'>
           {(isAuthenticated() && (this.props.user.username !== undefined))
@@ -32,6 +32,11 @@ class Navbar extends React.Component {
               <Menu.Item as={Link} to='/new-listing'>
                 Create a Listing
               </Menu.Item>
+
+              <Menu.Item as={Link} to="/job_list">
+                Job List
+              </Menu.Item>
+
               <Dropdown simple trigger={profile} icon={null} style={{ minWidth: '10vw' }}>
                 <Dropdown.Menu style={{ width: '100%' }}>
                   <Dropdown.Item style={{ paddingLeft: '10px' }} as={Link} to={`/profile/${this.props.user.id}`}>
@@ -66,11 +71,12 @@ class Navbar extends React.Component {
               <Menu.Item as={Link} to='/login'>
                 Login
               </Menu.Item>
-              <Link to="/job_list">JOBLIST</Link>
+              
               <Menu.Item as={Link} to='/register'>
                 Sign Up
               </Menu.Item>
             </>
+
           }
           </Menu.Menu>
       </Menu>
